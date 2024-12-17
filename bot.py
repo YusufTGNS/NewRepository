@@ -15,8 +15,25 @@ async def on_ready():
 @bot.command()
 async def start(ctx):
     await ctx.send("Merhaba! Ben bir sohbet yöneticisi botuyum!")
+    
+@bot.command(name="yazitura")
+async def yazitura(ctx, tahmin: str):
+    # Geçerli giriş kontrolü
+    if tahmin.lower() not in ["yazı", "tura"]:
+        await ctx.send("Lütfen 'yazı' veya 'tura' seç!")
+        return
 
-#aaaaa
+    # Yazı-Tura sonucu
+    sonuc = random.choice(["yazı", "tura"])
+
+    # Kazanıp kazanmadığını kontrol et
+    if tahmin.lower() == sonuc:
+        await ctx.send(f"Tebrikler! **{sonuc}** geldi. Kazandın! 🎉")
+    else:
+        await ctx.send(f"Maalesef, **{sonuc}** geldi. Kaybettin. 😢")
+
+
+#git reset --hard origin/main
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member = None):
