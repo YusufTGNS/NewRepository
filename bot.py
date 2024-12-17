@@ -16,6 +16,7 @@ async def on_ready():
 async def start(ctx):
     await ctx.send("Merhaba! Ben bir sohbet yöneticisi botuyum!")
 
+#aaaaa
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member = None):
