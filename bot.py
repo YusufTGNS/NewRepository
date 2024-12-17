@@ -17,6 +17,12 @@ async def on_ready():
 async def start(ctx):
     await ctx.send("Merhaba! Ben bir sohbet yöneticisi botuyum!")
 
+@bot.event
+async def on_member_join(member):
+    # Karşılama mesajı gönderme
+    for channel in member.guild.text_channels:
+        await channel.send(f"Hoş geldiniz, {member.mention}!")
+
 @bot.command(name="yazitura")
 async def yazitura(ctx, tahmin: str):
     # Geçerli giriş kontrolü
